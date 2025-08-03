@@ -1,16 +1,19 @@
 <template>
   <div class="app">
     <!-- 路由占位 -->
-    <router-view/>
+    <router-view />
     <!-- 底部导航栏 -->
-    <tab-bar/>
+    <tab-bar v-if="!$route.meta.hideTabBar" />
   </div>
 </template>
 
 <script setup>
-  import TabBar from "@/components/tab-bar/tab-bar.vue" 
+
+import TabBar from "@/components/tab-bar/tab-bar.vue"
+
+
 </script>
 
 
-<style scoped></style>
- 
+<style scoped>
+</style>

@@ -1,22 +1,27 @@
 <template>
   <div class="home">
+    <!-- 顶部导航栏 -->
     <home-nav-bar></home-nav-bar>
+    <!-- 轮播图 -->
     <div class="bannar">
       <img src="@/assets/img/home/bannar.png" alt="">
     </div>
-    <div class="location">
-      <div class="city">广州</div>
-      <div class="pisition">
-        <span class="text">我的位置</span>
-        <img src="@/assets/img/home/position.png" alt="">
-      </div>
-    </div>
+    <!-- 搜索框架 -->
+    <home-search-box></home-search-box>
     home
   </div>
 </template>
 
 <script setup>
 import homeNavBar from './cpns/home-nav-bar.vue';
+import HomeSearchBox from './cpns/home-search-box.vue';
+import homeSearchBox from './cpns/home-search-box.vue';
+import useHomeStore from '@/stores/modules/home';
+
+// 发送网络请求获取热门搜索
+const homeStore = useHomeStore()
+homeStore.fetchHotSuggests()
+
 </script>
 
 <style lang="less" scoped>
@@ -24,32 +29,6 @@ import homeNavBar from './cpns/home-nav-bar.vue';
   .bannar {
     img {
       width: 100%;
-    }
-  }
-
-  .location {
-    display: flex;
-    align-items: center;
-    height: 44px;
-    padding: 0 10px;
-
-    .city {
-      flex: 1;
-    }
-
-    .pisition {
-      width: 74px;
-      display: flex;
-      align-items: center;
-
-      .text {
-        font-size: 12px;
-      }
-
-      img {
-        margin-left: 5px;
-        width: 20px;
-      }
     }
   }
 }
