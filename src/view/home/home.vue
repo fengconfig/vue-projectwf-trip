@@ -8,7 +8,8 @@
     </div>
     <!-- 搜索框架 -->
     <home-search-box></home-search-box>
-    home
+    <!-- 分类 -->
+    <home-categories></home-categories>
   </div>
 </template>
 
@@ -17,10 +18,12 @@ import homeNavBar from './cpns/home-nav-bar.vue';
 import HomeSearchBox from './cpns/home-search-box.vue';
 import homeSearchBox from './cpns/home-search-box.vue';
 import useHomeStore from '@/stores/modules/home';
+import homeCategories from './cpns/home-categories.vue';
 
 // 发送网络请求获取热门搜索
 const homeStore = useHomeStore()
 homeStore.fetchHotSuggests()
+homeStore.fetchCategories()
 
 </script>
 
