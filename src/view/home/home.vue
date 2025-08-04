@@ -10,6 +10,9 @@
     <home-search-box></home-search-box>
     <!-- 分类 -->
     <home-categories></home-categories>
+    <!-- 热门推荐 -->
+    <home-show-content></home-show-content>
+    <button @click="loadMore()">加载更多</button>
   </div>
 </template>
 
@@ -19,11 +22,17 @@ import HomeSearchBox from './cpns/home-search-box.vue';
 import homeSearchBox from './cpns/home-search-box.vue';
 import useHomeStore from '@/stores/modules/home';
 import homeCategories from './cpns/home-categories.vue';
+import homeShowContent from './cpns/home-show-content.vue';
 
 // 发送网络请求获取热门搜索
 const homeStore = useHomeStore()
 homeStore.fetchHotSuggests()
 homeStore.fetchCategories()
+homeStore.fetchHouseList()
+
+const loadMore = () => {
+  homeStore.fetchHouseList()
+}
 
 </script>
 

@@ -24,6 +24,9 @@ const { categories } = storeToRefs(homeStore);
   height: 80px;
   padding: 0 10px;
   margin-top: 8px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .item {
     flex-shrink: 0;

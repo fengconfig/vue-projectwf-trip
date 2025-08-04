@@ -36,6 +36,7 @@
 
 <style lang="less" scoped>
     .tab-bar {
+      height: 50px;
       img {
         height: 25px;
       }

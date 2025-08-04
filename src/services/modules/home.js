@@ -10,3 +10,12 @@ export function getCategoriesData() {
     url: '/home/categories',
   })
 }
+
+export function getHouseListData(page) {
+  return wfRequest.get({
+    url: '/home/houselist',
+    params: {
+      page: page
+    }
+  })
+}
