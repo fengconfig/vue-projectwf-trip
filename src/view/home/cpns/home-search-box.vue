@@ -14,7 +14,7 @@
       <div class="start">
         <div class="date">
           <span>入住</span>
-          <span>{{ startDate }}</span>
+          <span>{{ startDateStr }}</span>
         </div>
       </div>
       <!-- 根据日期范围动态显示 -->
@@ -22,7 +22,7 @@
       <div class="end">
         <div class="date">
           <span>离店</span>
-          <span>{{ endDate }}</span>
+          <span>{{ endDateStr }}</span>
         </div>
       </div>
     </div>
@@ -56,8 +56,9 @@ import useCityStore from '@/stores/modules/city';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
 import { formatMouthDay, getDiffDays } from '@/utils/date_format';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import userHomeStore from '@/stores/modules/home';
+import userMainStore from '@/stores/modules/main';
 
 const router = useRouter()
 
@@ -77,18 +78,20 @@ const cityStore = useCityStore()
 const { currentCity } = storeToRefs(cityStore)
 
 // 日期选择
-const nowDate = new Date();
-const startDate = ref(formatMouthDay(nowDate))
-const newDate = new Date(nowDate.getTime() + 24 * 60 * 60 * 1000); // 加一天
-const endDate = ref(formatMouthDay(newDate))
-const stayCount = ref(getDiffDays(nowDate, newDate))
+const mainStore = userMainStore()
+const { startDate, endDate } = storeToRefs(mainStore)
+const startDateStr = computed(() => formatMouthDay(startDate.value))
+const endDateStr = computed(() => formatMouthDay(endDate.value))
+const stayCount = ref(getDiffDays(startDate.value, endDate.value))
 
 const showCalendar = ref(false)
 const onConfirm = (value) => {
-  startDate.value = formatMouthDay(value[0])
-  endDate.value = formatMouthDay(value[1])
+  const selectStartDate = value[0]
+  const selectEndDate = value[1]
+  mainStore.startDate = selectStartDate
+  mainStore.endDate = selectEndDate
   showCalendar.value = false
-  stayCount.value = getDiffDays(value[0], value[1])
+  stayCount.value = getDiffDays(selectStartDate, selectEndDate)
 }
 
 // 热门搜索
@@ -100,10 +103,10 @@ const searchBtnClick = () => {
   router.push({
     path: '/search',
     query: {
-      startDate: startDate.value,
-      endDate: endDate.value
+      startDate: startDateStr.value,
+      endDate: endDateStr.value
     }
-  }) 
+  })
 }
 
 </script>

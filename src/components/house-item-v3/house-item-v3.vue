@@ -14,7 +14,7 @@
           <div class="price">
             <div class="new">{{ "￥" + houseInfo.finalPrice }}</div>
             <div class="old">{{ "￥" + houseInfo.productPrice }}</div>
-            <div class="tip">{{ houseInfo.priceTipBadge.text }}</div>
+            <div class="tip">{{ houseInfo?.priceTipBadge?.text }}</div>
           </div>
         </div>
       </div>
