@@ -25,4 +25,14 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://codercba.com:1888', // 后端地址
+        changeOrigin: true,                 // 修改请求头Host
+        pathRewrite: { '^/api': '' }         // 路径重写
+      }
+    }
+  }
 })

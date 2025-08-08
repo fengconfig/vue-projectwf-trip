@@ -5,7 +5,6 @@
     <!-- 底部导航栏 -->
     <tab-bar v-if="!$route.meta.hideTabBar" />
     <loading></loading>
-    <!-- 测试提交 -->
   </div>
 </template>
 

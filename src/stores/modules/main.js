@@ -8,6 +8,8 @@ const userMainStore = defineStore('main', {
     token: '',
     startDate: startDate,
     endDate: endDate,
+    
+    isLoading: false
   }),
 })
 

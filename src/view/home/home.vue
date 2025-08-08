@@ -48,7 +48,6 @@ const endDateStr = computed(() => formatMouthDay(endDate.value, 'MM.DD'))
 // 监听滚动位置
 const { isReachBottom, scrollTop } = scrollHook()
 watch(isReachBottom, (newValue) => {
-  console.log(newValue);
   if (newValue) {
     homeStore.fetchHouseList().then(() => {
       isReachBottom.value = false
