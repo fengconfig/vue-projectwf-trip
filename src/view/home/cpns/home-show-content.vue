@@ -23,7 +23,6 @@ const homeStore = userHomeStore();
 const { houseList } = homeStore;
 
 const itemClick = (item) => {
-  console.log("点击了", item.houseId);
   router.push('/detail/' + item.houseId)
 }
 
