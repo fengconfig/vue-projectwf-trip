@@ -40,7 +40,6 @@ for (const item of props.swipeData) {
   swipeArray.push(item)
 }
 
-console.log(swipeGroup);
 
 const rex = /【(.*?)】：/i
 const getName = (name) => { 
