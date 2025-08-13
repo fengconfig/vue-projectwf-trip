@@ -69,8 +69,8 @@ defineProps({
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 8px;
-  margin: 12px;
+  padding: 8px 5px;
+  margin: 8px 0;
   border-radius: 5px;
   font-size: 12px;
   background-color: #f5f7fa;
